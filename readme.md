@@ -2,21 +2,24 @@
 <img align="right" src="https://delegate.dk/media/26491/logo_transparent_200px_72dpi.png">
 Welcome to Delegate's new code challenge. This year we decided to build a code-challenge that mimics what we work with and how we work.  
 
-The challenge for you is to build a fictious REST API for an Internet of Things application. We have created a skeleton that you can start with in C#, 
-but really you can solve our challenge in any language as long as you implement the API endpoints that we have described in the [OpenAPI spec (spec.yaml)](spec.yaml). 
+You have the opportunity to win a **[HTC Vive set](https://www.vive.com/eu/product/)**!  
 
-We love open source and git, so we have created our challenge as a git repository that you can fork. 
-Once you have solved the challenge in your fork you can run the unit test to see if your implementation passes a minimum of tests (you are also welcome to add more tests). 
-When you are happy with your solution you can submit a pull request to our repository, which will trigger an automated build that will build your docker image and 
-run an extra set of "hidden" tests against your solution. You will see the status for how well your solution does as a status on your pull request. If you fail any of our hidden tests, feel free to update your pull request. 
+For each of the challenges you complete and submit as part of your pull request, you get an entry into our raffle for the final code challenge price. Besides a chance to win the HTC Vive set, we also evaluate all submissions based on code quality and originality, and we invite people that do a good job for a visit or maybe even a job interview.  
 
-For our build pipeline to be able to compile and test your solution, we ask you to supply a docker file, that when built 
-will start your REST API on port 80 (without https). Since you can use Docker you are allowed to solve the challenge in any language you like.
+**If you want the opportunity to win the price, please make sure to send an email with your name, GitHub username and information on how to reach you to HR@delegate.dk.**
 
 ## The Challenges 
 At Delegate we do many different projects, we don't just do IoT projects, but we have chosen an IoT scenario for the challenge as it represents a lot of what we work with. 
 
-For each of the challenges you complete and submit as part of your pull request, you get an entry into our raffle for the final code challenge price. Besides a chance to win some cool gadgets, we also evaluate all submissions based on code quality and originality, and we invite people that do a good job for a visit or maybe even a job interview. If you want to take part in either make sure that your GitHub profile has a valid email we can contact you on, or write us an email hr@delegate.dk linking your GitHub profile to an email that we can reach you on. 
+The challenge for you is to build a fictious REST API for an Internet of Things application. We have created a skeleton that you can start with in C#, 
+but really you can solve our challenge in any language as long as you implement the API endpoints that we have described in the [OpenAPI spec (spec.yaml)](spec.yaml). 
+
+We love Open Source and git, so we have created our challenge as a git repository that you can fork. Once you have solved the challenge in your fork you can run the unit test to see if your implementation passes a minimum of tests (you are also welcome to add more tests). When you are happy with your solution you can submit a pull request to our repository, which will trigger an automated build that will build your docker image and run an extra set of "hidden" tests against your solution. You will see the status for how well your solution does as a status on your pull request. If you fail any of our hidden tests, feel free to update your pull request. **Beware that we run your test project before building it, which means you have to remove any tests that you don't pass locally in order to submit a partial entry!**
+
+For our build pipeline to be able to compile and test your solution, we ask you to supply a docker file, that when built will start your REST API on port 80 (without https) *for any custom solution*. Since you can use Docker you are allowed to solve the challenge in any language you like. We suggest that any custom solution follows UpperCamelCase JSON deserialization if any errors occour while running, ideally case insensitive JSON deserialization.
+
+## Remember!
+If you want the opportunity to win the price, please make sure to send an email with your name, GitHub username and information on how to reach you to HR@delegate.dk 
 
 If you have technical questions or suggestions to the challenges, don't hesitate to open a github issue.
 
@@ -33,10 +36,10 @@ You should implement your decoding logic in at the REST endpoint /api/sensors/pa
 Example input:
 ```JSON
 {
-    "fPort": "43",
-    "data": "a2083714df12",
-    "devEUI": "1234",
-    "time": "2018-06-04T15:17:23.433+02:00"
+    "FPort": "43",
+    "Data": "a2083714df12",
+    "DevEUI": "1234",
+    "Time": "2018-06-04T15:17:23.433+02:00"
 }
 ```
 
@@ -58,67 +61,67 @@ You should implement your network failure simulation at REST endpoint /api/netwo
 The input JSON for the above image would look like this example input:
 ```JSON
 {
-    "graphs": [
+    "Graphs": [
         {
-            "label": "LoRaWAN network of devices and gateways",
-            "type": "network",
-            "nodes": [
+            "Label": "LoRaWAN network of devices and gateways",
+            "Type": "network",
+            "Nodes": [
                 {
-                    "id": "dev001",
-                    "type": "Device",
-                    "label": "Device 1"
+                    "Id": "dev001",
+                    "Type": "Device",
+                    "Label": "Device 1"
                 },
                 {
-                    "id": "dev002",
-                    "type": "Device",
-                    "label": "Device 2"
+                    "Id": "dev002",
+                    "Type": "Device",
+                    "Label": "Device 2"
                 },
                 {
-                    "id": "dev003",
-                    "type": "Device",
-                    "label": "Device 3"
+                    "Id": "dev003",
+                    "Type": "Device",
+                    "Label": "Device 3"
                 },
                 {
-                    "id": "dev004",
-                    "type": "Device",
-                    "label": "Device 4"
+                    "Id": "dev004",
+                    "Type": "Device",
+                    "Label": "Device 4"
                 },
                 {
-                    "id": "gw001",
-                    "type": "Gateway",
-                    "label": "Gateway 1"
+                    "Id": "gw001",
+                    "Type": "Gateway",
+                    "Label": "Gateway 1"
                 },
                 {
-                    "id": "gw002",
-                    "type": "Gateway",
-                    "label": "Gateway 2"
+                    "Id": "gw002",
+                    "Type": "Gateway",
+                    "Label": "Gateway 2"
                 }
             ],
-            "edges": [
+            "Edges": [
                 {
-                    "source": "dev001",
-                    "target": "gw001",
-                    "relation": "is_connected_to"
+                    "Source": "dev001",
+                    "Target": "gw001",
+                    "Relation": "is_connected_to"
                 },
                 {
-                    "source": "dev002",
-                    "target": "gw001",
-                    "relation": "is_connected_to"
+                    "Source": "dev002",
+                    "Target": "gw001",
+                    "Relation": "is_connected_to"
                 },
                 {
-                    "source": "dev003",
-                    "target": "gw001",
-                    "relation": "is_connected_to"
+                    "Source": "dev003",
+                    "Target": "gw001",
+                    "Relation": "is_connected_to"
                 },
                 {
-                    "source": "dev003",
-                    "target": "gw002",
-                    "relation": "is_connected_to"
+                    "Source": "dev003",
+                    "Target": "gw002",
+                    "Relation": "is_connected_to"
                 },
                 {
-                    "source": "dev004",
-                    "target": "gw002",
-                    "relation": "is_connected_to"
+                    "Source": "dev004",
+                    "Target": "gw002",
+                    "Relation": "is_connected_to"
                 }
             ]
         }
@@ -138,9 +141,9 @@ You should implement your Geocode lookup at REST endpoint /api/sensors/geocode f
 Example input:
 ```JSON
 {
-    "long": "12.484492",
-    "lat": "55.781619",
-    "devEUI": "1234",
-    "time": "2018-06-04T15:17:23.433+02:00"
+    "Long": "12.484492",
+    "Lat": "55.781619",
+    "DevEUI": "1234",
+    "Time": "2018-06-04T15:17:23.433+02:00"
 }
 ```
