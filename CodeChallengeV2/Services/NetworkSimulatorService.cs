@@ -15,7 +15,41 @@ namespace CodeChallengeV2.Services
         /// <returns></returns>
         public Task<List<Node>> FindCritialGateways(NetworkGraph graph)
         {
-            return Task.FromResult(Enumerable.Empty<Node>().ToList());
+            List<Node> critGateways = new List<Node>();
+            foreach (Graph g in graph.Graphs)
+            {
+                Dictionary<string, List<string>> edges = new Dictionary<string, List<string>>();
+                Dictionary<string, Node> devices = new Dictionary<string, Node>();
+                Dictionary<string, Node> gateways = new Dictionary<string, Node>();
+                Dictionary<string, Node> crit = new Dictionary<string, Node>();
+                foreach (Node n in g.Nodes)
+                {
+                    if (n.Type.Equals("Device")) devices.Add(n.Id, n);
+                    if (n.Type.Equals("Gateway")) gateways.Add(n.Id, n);
+                }
+                foreach (string dev in devices.Keys)
+                {
+                    List<string> targets = new List<string>();
+                    foreach (Edge e in g.Edges)
+                        if (e.Source.Equals(dev))
+                        {
+                            targets.Add(e.Target);
+                        }
+                    edges.Add(dev, targets);
+                }
+                foreach (string key in devices.Keys)
+                {
+                    if (edges[key].Count == 1)
+                    {
+                        crit.TryAdd(gateways[edges[key][0]].Id, gateways[edges[key][0]]);
+                    }
+                }
+                foreach (Node n in crit.Values)
+                {
+                    critGateways.Add(n);
+                }
+            }
+            return Task.FromResult(critGateways);
         }
     }
 }
