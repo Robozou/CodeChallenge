@@ -1,0 +1,67 @@
+{
+  "Graphs": [
+    {
+      "Label": "LoRaWAN network of devices and gateways",
+      "Type": "network",
+      "Nodes": [
+        {
+          "Id": "dev001",
+          "Type": "Device",
+          "Label": "Device 1"
+        },
+        {
+          "Id": "dev002",
+          "Type": "Device",
+          "Label": "Device 2"
+        },
+        {
+          "Id": "dev003",
+          "Type": "Device",
+          "Label": "Device 3"
+        },
+        {
+          "Id": "dev004",
+          "Type": "Device",
+          "Label": "Device 4"
+        },
+        {
+          "Id": "gw001",
+          "Type": "Gateway",
+          "Label": "Gateway 1"
+        },
+        {
+          "Id": "gw002",
+          "Type": "Gateway",
+          "Label": "Gateway 2"
+        }
+      ],
+      "Edges": [
+        {
+          "Source": "dev001",
+          "Target": "gw001",
+          "Relation": "is_connected_to"
+        },
+        {
+          "Source": "dev002",
+          "Target": "gw001",
+          "Relation": "is_connected_to"
+        },
+        {
+          "Source": "dev003",
+          "Target": "gw001",
+          "Relation": "is_connected_to"
+        },
+        {
+          "Source": "dev003",
+          "Target": "gw002",
+          "Relation": "is_connected_to"
+        },
+        {
+          "Source": "dev004",
+          "Target": "gw002",
+          "Relation": "is_connected_to"
+        }
+      ]
+    }
+  ]
+}
